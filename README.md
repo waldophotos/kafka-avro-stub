@@ -90,7 +90,7 @@ If you need any of the above limitations lifted first step is to open an Issue a
 ## Release History
 
 - **v0.0.1**, *01 Feb 2017*
-    - Big Bang
+    - Big Bang.
 
 ## License
 
