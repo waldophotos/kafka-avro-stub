@@ -13,6 +13,68 @@ npm install kafka-avro-stub --save-dev
 
 ## Documentation
 
+### Quick Usage
+
+```js
+var KafkaAvro = require('kafka-avro');
+var KafkaAvroStub = require('kafka-avro-stub');
+var schemaRegistryFix = require('./fixtures/schema-registry.fix');
+
+// Instantiate Kafka Avro
+var kafkaAvro = new KafkaAvro(kafkaConf);
+
+// Instantiate the Kafka Avro Stub
+var kafkaAvroStub = new KafkaAvroStub(kafkaAvro);
+
+// Before you invoke the kafkaAvro.init() method stub:
+kafkaAvroStub.stub(schemaRegistryFix);
+
+/* ... */
+
+// Reset
+kafkaAvroStub.reset();
+```
+
+### How does it work
+
+The Kafka Avro Stub will provide complete mock objects of the Consumer and Produce node-rdkafka Constructors. It will also stub the behavior of the `kafkaAvro.init()` method.
+
+kafka-avro-stub mocks behaviors of:
+
+* `Producer.produce()` Typical method of producing.
+* `Consumer.on('data')` Using the `consume()` and data event.
+* `Consumer.getReadStream()` Using readable streams.
+
+It will properly consume and produce messages, acting like a Kafka server. The messages produced are proper Kafka produced messages with all the expected keys:
+
+* `topic` Topic name.
+* `value` Raw value in byte code.
+* `parsed` Deserialized object (as passed).
+* `offset` Message offset.
+* `size` Size of the message.
+* `partition` Partition used.
+* `key` Key used.
+
+### kafkaAvroStub.stub(schemaRegistryFix)
+
+You only need to invoke the `stub()` method once per runtime, not in every test. The argument required is a fixture representing the response of the Schema Registry.
+
+`schemaRegistryFix` is an **Array** of Objects which must have the following properties:
+
+* `subject` {string} The full topic name. Do not include `-value` or `-key` suffixes.
+* `version` {number} The version number of the schema, use `1`.
+* `id` {number} The schema id, any unique number will do.
+* `schema` {string} JSON serialized schema. Stringify your Avro schema objects or `.avsc` files.
+
+### kafkaAvroStub.reset()
+
+Run this method between your tests to reset all listeners and counters.
+
+### Known Limitations
+
+* There are no receipts emitted through the `delivery-report` event.
+* There are no events emitted other than `data`.
+* If multiple consumers are instantiated they will all be treated as one. Do not expect topic separation between them, you shouldn't have more than one Consumers per runtime anyway.
 
 ## Releasing
 
