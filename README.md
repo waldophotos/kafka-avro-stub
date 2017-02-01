@@ -57,7 +57,7 @@ It will properly consume and produce messages, acting like a Kafka server. The m
 
 ### kafkaAvroStub.stub(schemaRegistryFix)
 
-You only need to invoke the `stub()` method once per runtime, not in every test. The argument required is a fixture representing the response of the Schema Registry.
+You only need to invoke the `stub()` method once per runtime, not in every test. If you run `stub()` again, it will simply invoke the `reset()` method. The argument required is a fixture representing the response of the Schema Registry.
 
 `schemaRegistryFix` is an **Array** of Objects which must have the following properties:
 
@@ -75,6 +75,9 @@ Run this method between your tests to reset all listeners and counters.
 * There are no receipts emitted through the `delivery-report` event.
 * There are no events emitted other than `data`.
 * If multiple consumers are instantiated they will all be treated as one. Do not expect topic separation between them, you shouldn't have more than one Consumers per runtime anyway.
+* There is no manual committing, all messages is assumed are committed as they are received.
+
+If you need any of the above limitations lifted first step is to open an Issue and a second step, if you want to achieve awesomeness, would be to submit a pull request.
 
 ## Releasing
 
