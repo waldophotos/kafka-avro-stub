@@ -2,6 +2,7 @@
 
 > Stubs for the [kafka-avro library](https://github.com/waldophotos/kafka-avro).
 
+[![Build Status](https://travis-ci.org/waldophotos/kafka-avro-stub.svg?branch=master)](https://travis-ci.org/waldophotos/kafka-avro-stub)
 
 ## Install
 
