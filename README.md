@@ -76,10 +76,13 @@ Run this method between your tests to reset all listeners and counters.
 Kafka avro stub provides the following properties after the `stub()` method is invoked:
 
 * `kafkaAvroStub.kafkaAvroInitsStub` {sinon.Stub} [Sinon stub](http://sinonjs.org/docs/#stubs-api) of the `kafkaAvro.init()` method.
-* `kafkaAvroStub.produceSpy` {sinon.Spy} [Sinon spy](http://sinonjs.org/docs/#spies-api) on the `Producer.produce()` method, catches all calls regardless.
+* `kafkaAvroStub.produceSpies` {Array.<sinon.Spy>} [Sinon spy](http://sinonjs.org/docs/#spies-api) on the `Producer.produce()` method, will be stored in the order they were invoked.
+* `kafkaAvroStub.consumeCommitSpies` {Array.<sinon.Spy>} [Sinon spy](http://sinonjs.org/docs/#spies-api) on the `Consumer.commit()` method, will be stored in the order they were invoked.
 * `kafkaAvroStub.messagesProduced` {Object.<Array>} An object with topic names as keys and values an Array of messages produced on that topic in sequence.
 
 All of the above properties are reset when the `reset()` method is invoked.
+
+> **WARNING** The `kafkaAvroStub.produceSpies` and `kafkaAvroStub.consumeCommitSpies` Arrays will not be emptied with the `reset()` method, however the Sinon Spies they contain will get reset.
 
 ### Known Limitations
 
