@@ -71,12 +71,23 @@ You only need to invoke the `stub()` method once per runtime, not in every test.
 
 Run this method between your tests to reset all listeners and counters.
 
+### Available Properties
+
+Kafka avro stub provides the following properties after the `stub()` method is invoked:
+
+* `kafkaAvroStub.kafkaAvroInitsStub` {sinon.Stub} [Sinon stub](http://sinonjs.org/docs/#stubs-api) of the `kafkaAvro.init()` method.
+* `kafkaAvroStub.produceSpy` {sinon.Spy} [Sinon spy](http://sinonjs.org/docs/#spies-api) on the `Producer.produce()` method, catches all calls regardless.
+* `kafkaAvroStub.messagesProduced` {Object.<Array>} An object with topic names as keys and values an Array of messages produced on that topic in sequence.
+
+All of the above properties are reset when the `reset()` method is invoked.
+
 ### Known Limitations
 
 * There are no receipts emitted through the `delivery-report` event.
 * There are no events emitted other than `data`.
 * If multiple consumers are instantiated they will all be treated as one. Do not expect topic separation between them, you shouldn't have more than one Consumers per runtime anyway.
 * There is no manual committing, all messages is assumed are committed as they are received.
+* Once you go stub you never go back.
 
 If you need any of the above limitations lifted first step is to open an Issue and a second step, if you want to achieve awesomeness, would be to submit a pull request.
 
