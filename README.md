@@ -101,6 +101,8 @@ If you need any of the above limitations lifted first step is to open an Issue a
 
 ## Release History
 
+- **v0.0.3**, *02 Feb 2017*
+    - Created and exposed a spy on the `producer.produce()` method.
 - **v0.0.2**, *02 Feb 2017*
     - `reset()` method will not reset the registered consumers.
 - **v0.0.1**, *01 Feb 2017*
