@@ -104,6 +104,8 @@ If you need any of the above limitations lifted first step is to open an Issue a
 
 ## Release History
 
+- **v0.1.0**, *02 Feb 2017*
+    - Created two new arrays `kafkaAvroStub.produceSpies` and `kafkaAvroStub.consumeCommitSpies`, the first one replaced the `kafkaAvroStub.produceSpy`.
 - **v0.0.3**, *02 Feb 2017*
     - Created and exposed a spy on the `producer.produce()` method.
 - **v0.0.2**, *02 Feb 2017*
