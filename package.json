@@ -1,6 +1,6 @@
 {
   "name": "kafka-avro-stub",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./lib/kafka-avro-stub",
   "description": "Stubs for the kafka-avro library.",
   "homepage": "https://github.com/waldophotos/kafka-avro-stub",
