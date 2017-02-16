@@ -104,6 +104,8 @@ If you need any of the above limitations lifted first step is to open an Issue a
 
 ## Release History
 
+- **v0.2.1**, *16 Feb 2017*
+    - Support `connect()` and `ready` event which have been decoupled from `^0.6.0`.
 - **v0.2.0**, *15 Feb 2017*
     - Added `subscribe` stub on Consumers, use kafka-avro `0.5.0`.
 - **v0.1.0**, *02 Feb 2017*
