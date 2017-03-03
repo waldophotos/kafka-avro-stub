@@ -94,6 +94,13 @@ All of the above properties are reset when the `reset()` method is invoked.
 
 If you need any of the above limitations lifted first step is to open an Issue and a second step, if you want to achieve awesomeness, would be to submit a pull request.
 
+## Version Support Table
+
+| **kafka-avro-stub** | **kafka-avro** |
+|---------------------|---------------|
+| From `0.3.0` | From `0.7.0`|
+| Up to `0.2.1` | Up to `0.6.4`|
+
 ## Releasing
 
 1. Update the changelog bellow.
@@ -104,6 +111,8 @@ If you need any of the above limitations lifted first step is to open an Issue a
 
 ## Release History
 
+- **v0.3.0**, *03 Mar 2017*
+    - Support kafka-avro `^0.7.0`.
 - **v0.2.1**, *16 Feb 2017*
     - Support `connect()` and `ready` event which have been decoupled from `^0.6.0`.
 - **v0.2.0**, *15 Feb 2017*
